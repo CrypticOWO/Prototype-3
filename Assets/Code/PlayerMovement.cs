@@ -42,16 +42,16 @@ public class PlayerControls : MonoBehaviour
 
             Vector3 moveDirection = (forward * direction.z + right * direction.x).normalized;
 
-            RB.velocity = new Vector3(moveDirection.x * Speed, RB.velocity.y, moveDirection.z * Speed);
+            RB.linearVelocity = new Vector3(moveDirection.x * Speed, RB.linearVelocity.y, moveDirection.z * Speed);
         }
         else
         {
-            RB.velocity = new Vector3(0, RB.velocity.y, 0);
+            RB.linearVelocity = new Vector3(0, RB.linearVelocity.y, 0);
         }
         
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            RB.velocity = new Vector3(RB.velocity.x, 0, RB.velocity.z);
+            RB.linearVelocity = new Vector3(RB.linearVelocity.x, 0, RB.linearVelocity.z);
             RB.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
         }
     }
